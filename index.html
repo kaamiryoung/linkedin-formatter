@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport for responsiveness -->
+    <title>LinkedIn Formatter</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Emoji Picker Library -->
+    <link href="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/picker.css" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>LinkedIn Post Formatter</h1>
+        <p class="subtitle">Paste messy text, format it, preview, add hashtags, and copy!</p>
+
+        <div class="main-content">
+            <!-- Column 1: Input & Formatting -->
+            <div class="column format-column">
+                <h2>Input & Format</h2>
+                <div class="input-section">
+                    <label for="inputText">Paste your draft here:</label>
+                    <div class="toolbar">
+                        <button id="boldBtn" title="Bold (Unicode)"><b>B</b></button>
+                        <button id="italicBtn" title="Italic (Unicode)"><i>I</i></button>
+                        <button id="emojiBtn" title="Add Emoji">😊</button>
+                    </div>
+                    <textarea id="inputText" rows="12" placeholder="Paste notes, markdown, or plain text..."></textarea>
+                    <div class="counters">
+                        <span id="charCounter">Characters: 0 / 3000</span>
+                        <span id="hashCounter">Hashtags: 0</span>
+                    </div>
+                    <!-- Emoji Picker Element (Hidden initially) -->
+                    <div class="emoji-picker-container" style="display: none;">
+                        <emoji-picker></emoji-picker>
+                    </div>
+                </div>
+
+                <button id="formatBtn">Format for LinkedIn</button>
+
+                <div class="output-section">
+                    <label for="outputText">Formatted Text:</label>
+                    <textarea id="outputText" rows="12" readonly placeholder="Formatted text will appear here..."></textarea>
+                    <p class="tip"><em>Note: Formatting is optimized for pasting. List rendering depends on LinkedIn.</em></p>
+                    <button id="copyBtn">Copy Formatted Text</button>
+                </div>
+
+                 <div id="hashtagSection" class="hashtag-section">
+                    <h4>Suggested Hashtags (Click to Add):</h4>
+                    <div id="hashtagList" class="hashtag-list">
+                        <!-- Suggested hashtags will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Preview -->
+            <div class="column preview-column">
+                <h2>Live Preview</h2>
+                <div id="linkedinPreviewContainer" class="preview-container">
+                    <div class="preview-header">
+                        <div class="preview-avatar"></div>
+                        <div class="preview-user-info">
+                            <div class="preview-user-name">Your Name</div>
+                            <div class="preview-user-headline">Your Headline / Job Title</div>
+                            <div class="preview-timestamp">1h • <i class="fa-solid fa-earth-americas"></i></div>
+                        </div>
+                    </div>
+                    <div id="linkedinPreviewContent" class="preview-content">
+                        <p class="preview-placeholder">Preview will appear here after formatting...</p>
+                    </div>
+                    <div class="preview-actions">
+                         <button class="action-btn"><i class="fa-regular fa-thumbs-up"></i> Like</button>
+                         <button class="action-btn"><i class="fa-regular fa-comment-dots"></i> Comment</button>
+                         <button class="action-btn"><i class="fa-solid fa-repeat"></i> Repost</button>
+                         <button class="action-btn"><i class="fa-solid fa-paper-plane"></i> Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- START: Updated Footer Section with Your Links -->
+        <footer>
+            <div class="footer-content">
+                <div class="social-links">
+                    <!-- Your LinkedIn Profile -->
+                    <a href="https://www.linkedin.com/in/proaamirkhan/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <!-- Your Instagram Profile -->
+                     <a href="https://www.instagram.com/kaamiryoung/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                     <!-- GitHub Placeholder (Replace #YOUR_GITHUB_URL if you have one) -->
+                    <a href="https://github.com/kaamiryoung" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+                <p class="copyright">
+                    Copyright © <span id="copyYear"></span>
+                    <!-- Replace with your name or brand if desired -->
+                    Aamir Khan.
+                    All Rights Reserved.
+                </p>
+                 <p class="tool-credit">LinkedIn Formatter</p>
+            </div>
+        </footer>
+        <!-- END: Updated Footer Section -->
+
+    </div> <!-- End .container -->
+
+    <!-- JS -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,482 @@
+/* --- Base & Layout --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f2f5; /* Slightly different background */
+    color: #1c1e21; /* Darker text */
+    margin: 0;
+    padding: 15px; /* Base padding */
+}
+
+.container {
+    max-width: 1200px; /* Wider container for large screens */
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); /* Subtle shadow */
+}
+
+h1 {
+    text-align: center;
+    color: #0a66c2; /* LinkedIn Blue */
+    margin-bottom: 5px;
+    font-size: 1.8rem;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: #606770; /* LinkedIn secondary text */
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 35px; /* Space between columns */
+}
+
+.column {
+    flex: 1; /* Equal space distribution */
+    min-width: 320px; /* Minimum width before wrapping - adjust as needed */
+}
+
+/* --- Input/Output & Formatting --- */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd0d5; /* LinkedIn-like border color */
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    resize: vertical;
+    font-family: inherit;
+    min-height: 150px; /* Ensure decent minimum height */
+}
+textarea:focus {
+    border-color: #0a66c2;
+    box-shadow: 0 0 0 1px rgba(10, 102, 194, 0.5);
+    outline: none;
+}
+
+
+textarea#outputText {
+    background-color: #f5f6f7; /* Slightly off-white readonly background */
+    cursor: default;
+}
+
+button {
+    display: inline-block;
+    background-color: #0a66c2;
+    color: white;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin-top: 5px;
+    margin-right: 5px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 600;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #004182;
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#formatBtn {
+    display: block;
+    width: 100%;
+    margin: 25px 0;
+    background-color: #28a745;
+    font-weight: bold;
+    font-size: 1.05rem;
+    padding: 11px 18px;
+}
+#formatBtn:hover {
+    background-color: #218838;
+}
+
+#copyBtn {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    background-color: #6c757d; /* Secondary button color */
+}
+#copyBtn:hover {
+    background-color: #5a6268;
+}
+
+.input-section, .output-section {
+    margin-bottom: 30px;
+}
+
+.counters {
+    font-size: 0.85em;
+    color: #606770;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+}
+
+.toolbar {
+    margin-bottom: 8px;
+    background-color: #f5f6f7;
+    padding: 6px 8px;
+    border: 1px solid #ccd0d5;
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+}
+
+.toolbar button {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccd0d5;
+    padding: 4px 8px;
+    font-size: 0.9em;
+    margin: 2px;
+    min-width: 32px;
+}
+.toolbar button:hover {
+    background-color: #e9ebee;
+}
+.toolbar button b, .toolbar button i {
+    font-size: 1.1em;
+}
+
+/* Emoji Picker */
+.emoji-picker-container {
+    position: relative;
+    z-index: 10;
+    border: 1px solid #ccd0d5;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    width: fit-content;
+}
+
+/* Copied Feedback */
+.copied-feedback {
+    background-color: #17a2b8 !important; /* Teal feedback */
+}
+
+/* --- Enhanced Preview Styles --- */
+.preview-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center preview container */
+}
+
+.preview-container {
+    border: 1px solid #d1d1d1;
+    background-color: #ffffff;
+    border-radius: 8px;
+    width: 100%; /* Take full width of its column */
+    max-width: 552px; /* LinkedIn post width */
+    margin: 0 auto;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.preview-header {
+    display: flex;
+    padding: 12px 16px;
+    align-items: center;
+    gap: 10px;
+}
+
+.preview-avatar {
+    width: 48px;
+    height: 48px;
+    background-color: #cccccc; /* Placeholder avatar */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10a40 40 0 100 80 40 40 0 000-80zm0 12a15 15 0 110 30 15 15 0 010-30zm0 35c-16 0-30 8-30 20h60c0-12-14-20-30-20z' fill='%23e0e0e0'/%3E%3C/svg%3E"); /* Simple SVG Placeholder */
+    background-size: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.preview-user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+}
+
+.preview-user-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #1c1e21;
+}
+
+.preview-user-headline,
+.preview-timestamp {
+    font-size: 0.8rem;
+    color: #606770;
+}
+.preview-timestamp i { /* Style icon in timestamp */
+    margin-left: 2px;
+}
+
+.preview-content {
+    padding: 4px 16px 16px 16px;
+    font-size: 0.94rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #1c1e21;
+    min-height: 60px;
+}
+
+.preview-placeholder {
+    color: #8a8d91;
+    font-style: italic;
+    margin: 0;
+}
+
+.preview-hashtag,
+.preview-mention {
+    color: #0a66c2;
+    font-weight: 500;
+    cursor: default; /* No actual linking in preview */
+    text-decoration: none; /* Remove underline if browser adds it */
+}
+.preview-mention {
+    font-weight: 600;
+}
+
+.preview-actions {
+    display: flex;
+    justify-content: space-around;
+    padding: 6px 0;
+    border-top: 1px solid #e0e0e0;
+    background-color: #fdfdfd; /* Very slight off-white */
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: #606770;
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: default; /* Not functional */
+    border-radius: 4px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.action-btn i {
+    font-size: 1.2em; /* Slightly larger icons */
+    color: #606770;
+}
+
+/* --- Hashtag Suggestions --- */
+.hashtag-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+.hashtag-section h4 {
+    margin-bottom: 15px;
+    color: #333;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.hashtag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between tags */
+}
+.hashtag-list button {
+    background-color: #eef3f8;
+    color: #0a66c2;
+    padding: 6px 12px;
+    font-size: 0.88rem;
+    border: 1px solid transparent;
+    border-radius: 16px; /* Pill shape */
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    margin: 0;
+    font-weight: 500;
+}
+.hashtag-list button:hover {
+    background-color: #dce6f1;
+    border-color: #0a66c2;
+}
+.hashtag-list button:disabled {
+    opacity: 0.6;
+    cursor: default;
+    background-color: #e9ecef;
+    color: #6c757d;
+    border-color: transparent;
+}
+
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    margin-top: 50px; /* More space above footer */
+    padding-top: 25px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.9rem;
+    color: #606770; /* LinkedIn secondary text color */
+}
+
+.footer-content {
+    max-width: 600px; /* Limit width of footer content */
+    margin: 0 auto; /* Center the content */
+}
+
+.social-links {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between icons */
+}
+
+.social-links a {
+    color: #333; /* Icon color */
+    text-decoration: none;
+    font-size: 1.6rem; /* Icon size */
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    color: #0a66c2; /* LinkedIn blue on hover */
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+.copyright {
+    font-size: 0.85em;
+    margin-bottom: 5px;
+}
+
+.tool-credit {
+     font-size: 0.8em;
+     color: #8a8d91;
+     margin-top: 10px;
+}
+
+/* --- Utility & Tip --- */
+.tip {
+    font-size: 0.85em;
+    color: #606770;
+    margin-top: -5px; /* Pull up slightly below textarea */
+    margin-bottom: 10px;
+    text-align: left; /* Align with textarea */
+    padding-left: 5px;
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Smaller Desktops / Larger Tablets */
+@media (max-width: 992px) {
+    .container {
+        max-width: 95%;
+        padding: 15px 20px;
+    }
+    .main-content {
+        gap: 25px;
+    }
+}
+
+/* Tablets & Smaller */
+@media (max-width: 768px) {
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.2rem; }
+    .subtitle { font-size: 0.95rem; }
+
+    .main-content {
+        flex-direction: column; /* Stack columns */
+    }
+    .column {
+        min-width: 100%; /* Full width when stacked */
+    }
+    .preview-column {
+        margin-top: 20px; /* Add space above preview when stacked */
+    }
+    .preview-container {
+        max-width: 100%; /* Allow preview to take full width */
+    }
+    .action-btn {
+        font-size: 0.8rem; /* Smaller action buttons */
+        padding: 6px 8px;
+    }
+    .action-btn span { /* Hide text on smaller screens maybe? */
+         /* display: none; */
+    }
+     .hashtag-list button {
+         font-size: 0.85rem;
+         padding: 5px 10px;
+     }
+     textarea {
+         min-height: 120px;
+     }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 15px;
+    }
+     h1 { font-size: 1.4rem; }
+     h2 { font-size: 1.1rem; }
+     .subtitle { font-size: 0.9rem; }
+
+    button {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+     #formatBtn {
+        font-size: 1rem;
+        padding: 10px 15px;
+     }
+    .toolbar button {
+         padding: 3px 6px;
+         min-width: 30px;
+    }
+     .preview-avatar {
+         width: 40px;
+         height: 40px;
+     }
+     .preview-user-name { font-size: 0.85rem; }
+     .preview-user-headline, .preview-timestamp { font-size: 0.75rem; }
+     .preview-content { font-size: 0.9rem; padding: 4px 12px 12px 12px; }
+     .action-btn { font-size: 0.75rem; gap: 4px; }
+     .action-btn i { font-size: 1.1em; }
+     .counters { font-size: 0.8rem; }
+     .tip { font-size: 0.8rem; }
+     footer { font-size: 0.8rem; }
+}
